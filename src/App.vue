@@ -30,41 +30,42 @@ import books from './data/books.json';
 const libros = reactive([]);
 const librosDeseados = reactive([]);
 
+// Cargar datos desde localStorage o inicializar con valores por defecto
 const cargarDatos = () => {
-  const storedLibros = localStorage.getItem('libros');
-  const storedLibrosDeseados = localStorage.getItem('librosDeseados');
+  const librosGuardados = localStorage.getItem('libros');
+  const librosDeseadosGuardados = localStorage.getItem('librosDeseados');
 
-  if (storedLibros) {
-    libros.splice(0, libros.length, ...JSON.parse(storedLibros));
+  if (librosGuardados) {
+    libros.splice(0, libros.length, ...JSON.parse(librosGuardados));
   } else {
     libros.splice(0, libros.length, ...books.library);
     localStorage.setItem('libros', JSON.stringify(books.library));
   }
 
-  if (storedLibrosDeseados) {
-    librosDeseados.splice(0, librosDeseados.length, ...JSON.parse(storedLibrosDeseados));
+  if (librosDeseadosGuardados) {
+    librosDeseados.splice(0, librosDeseados.length, ...JSON.parse(librosDeseadosGuardados));
   }
 };
 
+// Sincronizar entre pestañas
 onMounted(() => {
   cargarDatos();
-
-  window.addEventListener('storage', (event) => {
-    if (event.key === 'libros' || event.key === 'librosDeseados') {
+  window.addEventListener('storage', ({ key }) => {
+    if (key === 'libros' || key === 'librosDeseados') {
       cargarDatos();
     }
   });
 });
 
-watch([libros, librosDeseados], ([newLibros, newLibrosDeseados]) => {
-  localStorage.setItem('libros', JSON.stringify(newLibros));
-  localStorage.setItem('librosDeseados', JSON.stringify(newLibrosDeseados));
+// Guardar automáticamente cuando hay cambios
+watch([libros, librosDeseados], () => {
+  localStorage.setItem('libros', JSON.stringify(libros));
+  localStorage.setItem('librosDeseados', JSON.stringify(librosDeseados));
 }, { deep: true });
 
 provide('books', libros);
 provide('librosDeseados', librosDeseados);
 </script>
-
 
 <style scoped>
 #github {
