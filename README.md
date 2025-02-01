@@ -1,4 +1,4 @@
-# Proyecto Vue.js realizado por Pau Barón Jiménez estudiante en DAW en el IES Jándula.
+# Proyecto Vue.js realizado por Pau Barón Jiménez estudiante de DAW en el IES Jándula.
 ## 🌐 Enlace a la página web  
 <a href="https://boisterous-cannoli-773f14.netlify.app" target="_blank">Visitar sitio web 🚀</a>
 
