@@ -54,7 +54,7 @@ Muestra de página mostrando el almacen de libros y la lista de libros deseados:
 5. Abre un Pull Request.
 
 
-👥 Colaboradores
+## 👥 Colaboradores
 Creador: Pau Barón [@Paukkita]
 Participantes: Aún no hay colaboradores. ¡Anímate a contribuir! 🚀
 
