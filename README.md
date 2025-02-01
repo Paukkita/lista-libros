@@ -35,10 +35,13 @@ Además, permite agregar libros a una lista de deseos, con la posibilidad de inc
 ## Diseño de la pagina y funcionamiento básico
 Imagen de diseño principal de la página:
 ![image](https://github.com/user-attachments/assets/44a97c74-7652-49d2-b59d-85f5aaee27c7)
+
 Imagen de filtro por género:
 ![image](https://github.com/user-attachments/assets/d3779bbe-574b-4988-8242-2eff67f4d69a)
+
 Imagen de filtro por páginas:
 ![image](https://github.com/user-attachments/assets/b740e2d1-8e91-443d-a0f3-a0f408bebfe7)
+
 Muestra de página mostrando el almacen de libros y la lista de libros deseados: (Para reaizar el cambio se tiene que clickar el libro para cambiarlo y al contrario darle al boton de eliminar)
 ![image](https://github.com/user-attachments/assets/8d00c76f-10e5-4a02-a840-5bf114a8a00f)
 
@@ -51,4 +54,7 @@ Muestra de página mostrando el almacen de libros y la lista de libros deseados:
 5. Abre un Pull Request.
 
 
+##Colaboradores
+-Creador: Pau Barón @Paukkita.
+-Participantes: Sin participantes por el momento.
 
