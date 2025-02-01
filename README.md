@@ -5,11 +5,13 @@ Este proyecto, en constante desarrollo, está diseñado como una plataforma de a
 
 Además, permite agregar libros a una lista de deseos, con la posibilidad de incorporar futuras mejoras, como un sistema de compra. Se trata de un proyecto abierto a contribuciones para seguir evolucionando con el tiempo.
 
-## Características
-📖 Exploración de libros: Filtra por género y número de páginas.
-⭐ Lista de deseos: Guarda tus libros favoritos para futura compra.
-📚 Interfaz intuitiva: Diseño simple y amigable para una mejor experiencia.
-🚀 Proyecto en evolución: Continuamente mejorado con nuevas funciones y aportes.
+## 🌟 Características  
+
+- 📖 **Exploración de libros**: Filtra por género y número de páginas.  
+- ⭐ **Lista de deseos**: Guarda tus libros favoritos para futura compra.  
+- 📚 **Interfaz intuitiva**: Diseño simple y amigable para una mejor experiencia.  
+- 🚀 **Proyecto en evolución**: Continuamente mejorado con nuevas funciones y aportes.  
+- 🔄 **Sincronización entre ventanas**: Mantiene la información incluso después de cerrar la ventana.  
 
 ## Tecnologías Utilizadas
 - Vue.js 3
