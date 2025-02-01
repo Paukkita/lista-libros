@@ -1,6 +1,7 @@
 # Proyecto Vue.js realizado por Pau Barón Jiménez estudiante en DAW en el IES Jándula.
-## Enlace a pagina web
-- https://boisterous-cannoli-773f14.netlify.app
+## 🌐 Enlace a la página web  
+<a href="https://boisterous-cannoli-773f14.netlify.app" target="_blank">Visitar sitio web 🚀</a>
+
 
 ## Descripción
 Este proyecto, en constante desarrollo, está diseñado como una plataforma de aprendizaje para Vue.js iniciado por un estudiante. Su objetivo es simular una librería virtual donde los usuarios pueden explorar libros según sus preferencias, filtrando por género o número de páginas.
