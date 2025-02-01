@@ -33,7 +33,7 @@
 
     <ul>
         <li @click="cambiarLibro(libro)" v-for="libro in librosFiltrados" :key="libro.book.ISBN">
-            <img :src="libro.book.cover" :alt="libro.book.title" class="cover">
+            <img :src="libro.book.cover" :alt="libro.book.title" >
         </li>
     </ul>
     <article id="pie">
@@ -77,11 +77,12 @@ const librosFiltrados = computed(() => {
     grid-template-columns: 1fr 1fr;
     padding: 15px;
     border-radius: 10px;
-    color: white;
     text-align: center;
     width: 100%;
+    gap: 15px;
 }
-/* Contenedor de tabs y slider: mismos estilos */
+
+/* Contenedor de tabs y slider */
 .tabs, .PB-range-slider-div {
     display: flex;
     align-items: center;
@@ -90,11 +91,14 @@ const librosFiltrados = computed(() => {
     box-shadow: 0px 2px 4px rgba(24, 94, 224, 0.2);
     padding: 0.75rem;
     border-radius: 99px;
-    max-width: 350px; /* Tamaño igual para ambos */
-    height: 50px; /* Mantener misma altura */
+    max-width: 350px; 
+    height: 50px;
     margin: auto;
 }
 
+.tabs{
+    max-width: 500px;
+}
 /* Ocultar radios en tabs */
 .tabs input[type="radio"] {
     display: none;
@@ -106,31 +110,32 @@ const librosFiltrados = computed(() => {
     align-items: center;
     justify-content: center;
     height: 35px; /* Igual al slider */
-    width: 100px; /* Ajustado para que encaje */
-    font-size: 0.9rem;
+    width: 100px;
+    font-size: 1rem;
     color: black;
     font-weight: 500;
     border-radius: 99px;
     cursor: pointer;
-    transition: color 0.15s ease-in;
+    transition: color 0.2s ease-in-out;
 }
 
 /* Pestaña activa */
-.tabs input[type="radio"]:checked+label {
-    color: #185ee0;
+.tabs input[type="radio"]:checked + label {
+    color: white;
+    background-color: #4b0082; /* Morado oscuro */
 }
 
 /* Movimiento del slider (glider) */
-.tabs input[id="genero-todos"]:checked~.glider {
+.tabs input[id="genero-todos"]:checked ~ .glider {
     transform: translateX(0);
 }
 
-/* Contenedor del slider */
+/* Estilo del slider */
 .PB-range-slider-div {
     gap: 0.5rem;
 }
 
-/* Estilo del slider */
+/* Slider */
 .PB-range-slider {
     -webkit-appearance: none;
     width: 100%;
@@ -146,14 +151,14 @@ const librosFiltrados = computed(() => {
     opacity: 1;
 }
 
-/* Estilo del "thumb" del slider en Webkit (Chrome, Safari) */
+/* "Thumb" del slider en Webkit */
 .PB-range-slider::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
     width: 16px;
     height: 16px;
     border-radius: 50%;
-    background-color: #185ee0;
+    background-color: #4b0082;
     cursor: pointer;
     transition: 0.3s ease-in-out;
 }
@@ -162,52 +167,67 @@ const librosFiltrados = computed(() => {
     box-shadow: 0px 0px 8px rgba(24, 94, 224, 0.3);
 }
 
-/* Estilo del "thumb" en Firefox */
+/* "Thumb" en Firefox */
 .PB-range-slider::-moz-range-thumb {
     width: 16px;
     height: 16px;
     border-radius: 50%;
-    background-color: #185ee0;
+    background-color: #4b0082;
     cursor: pointer;
 }
 
 /* Valor dinámico del slider */
 .PB-range-slidervalue {
     font-weight: 600;
-    color: #185ee0;
+    color: #4b0082;
     font-size: 1rem;
     min-width: 80px;
     text-align: center;
 }
+/* Estilos internos para el componente lista-libros */
+
+/* Contenedor de la lista de libros */
 ul {
-    width: 100%;
-    list-style: none;
-    padding: 0;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 9px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    list-style-type: none;
+    margin: 0;
 }
 
+/* Elemento individual de la lista de libros */
 li {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
     cursor: pointer;
-    transition: transform 0.2s ease-in-out;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
 li:hover {
-    transform: scale(1.1);
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
 }
 
-.cover {
-    width: 120px;
-    height: 180px;
-    object-fit: cover;
+/* Imagen del libro */
+li img {
+    max-width: 100%;
+    height: auto;
     border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: box-shadow 0.2s ease-in-out;
 }
 
-li:hover .cover {
-    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+/* Pie de la lista de libros (cantidad de libros disponibles) */
+#pie {
+    background-color: #4b0082; /* Morado oscuro */
+    color: white;
+    padding: 10px;
+    text-align: center;
+    font-size: 1rem;
+    border-radius: 8px;
+    margin-top: 20px;
 }
 
 </style>

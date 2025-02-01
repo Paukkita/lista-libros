@@ -24,41 +24,81 @@ const eliminarLibro = (libro,index) => {
 </script>
 
 <style scoped>
+/* Contenedor de la lista de libros deseados */
 ul {
     display: flex;
-    list-style: none;
     flex-wrap: wrap;
-    padding: 0;
+    gap: 15px;
+    padding: 20px;
+    list-style-type: none;
+    margin: 0;
 }
 
+/* Cada libro en la lista */
 li {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+    background-color: #fff;
+    border-radius: 10px;
     padding: 10px;
+    width: 120px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column; /* Cambiado a columna para apilar los elementos */
+    align-items: center; /* Centra los elementos dentro del li */
+    justify-content: space-between;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+/* Efecto hover sobre cada libro */
+li:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Imagen de cada libro (igual que en el componente lista-libros) */
 .cover {
-    width: 80px;
-    border-radius: 5px;
+    width: 100px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
 }
 
+/* Estilo del botón de eliminar */
 button {
-    background-color: #c62828;
+    background-color: #c62828; /* Rojo brillante para el botón de eliminar */
     color: white;
     border: none;
-    padding: 5px 10px;
+    padding: 6px 12px;
+    font-size: 0.9rem;
     border-radius: 5px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px; /* Separación entre la imagen y el botón */
 }
 
+/* Hover sobre el botón de eliminar */
+button:hover {
+    background-color: #d32f2f; /* Rojo más claro al pasar el cursor */
+}
+
+/* Título de la lista de compra */
 h2 {
     text-align: center;
-    color: #333;
+    color: #4b0082; /* Morado oscuro */
+    font-size: 1.5rem;
+    margin-bottom: 20px;
 }
+
+/* Pie de la lista de compra */
 #pie {
     text-align: center;
-    position: bottom;
+    font-size: 1rem;
+    color: white;
+    background-color: #4b0082; /* Morado oscuro */
+    padding: 10px;
+    margin-top: 20px;
+    border-radius: 8px;
 }
+
 </style>
 

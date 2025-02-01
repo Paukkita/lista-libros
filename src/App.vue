@@ -1,6 +1,6 @@
 <template>
   <header>
-    <h1> Título provisional proyecto lista libros </h1>
+    <h1> Libreria </h1>
   </header>
   
   <main id="contenedor">
@@ -50,12 +50,15 @@ const cargarDatos = () => {
 // Sincronizar entre pestañas
 onMounted(() => {
   cargarDatos();
-  window.addEventListener('storage', ({ key }) => {
-    if (key === 'libros' || key === 'librosDeseados') {
-      cargarDatos();
+  window.addEventListener('storage', (event) => {
+    if (!document.hasFocus()) { // Solo actualiza si es otra pestaña
+      if (event.key === 'libros' || event.key === 'librosDeseados') {
+        cargarDatos();
+      }
     }
   });
 });
+
 
 // Guardar automáticamente cuando hay cambios
 watch([libros, librosDeseados], () => {
