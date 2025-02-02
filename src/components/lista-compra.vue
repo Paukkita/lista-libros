@@ -1,11 +1,18 @@
 <template>
+    <!-- titulo basico -->
     <h2>Lista de compra</h2>
+    <!-- lista donde se guardab los libros deseados. -->
     <ul>
         <li v-for="(libro, index) in librosDeseados" :key="libro.book.ISBN">
             <img :src="libro.book.cover" :alt="libro.book.title" class="cover" />
             <button @click="eliminarLibro(libro,index)">Eliminar</button>
         </li>
     </ul>
+    <!-- boton ficticio para comprar cosas -->
+    <section id="contenedor-comprar">
+        <button @click="comprar" class="comprar">Comprar libros</button>
+    </section>
+    <!-- cantidad de libros deseados -->
     <article id="pie">
         Cantidad de libros deseados {{ librosDeseados.length }}
     </article>
@@ -13,17 +20,31 @@
 
 <script setup>
 import { inject } from 'vue';
-
+//insertamos los array
 const librosDeseados = inject('librosDeseados');
 const librosHijo = inject('books');
 
+//funcion para eliminar libros de librosdeseados
 const eliminarLibro = (libro,index) => {
     librosDeseados.splice(index, 1);
     librosHijo.push(libro);
 };
+//funcion para simular compra de libros
+const comprar=()=>{
+    alert("Has comprado todos estos libros")
+}
 </script>
 
 <style scoped>
+#contenedor-comprar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.comprar{
+    background-color: green;
+    font-size: 1.3em;
+}
 /* Contenedor de la lista de libros deseados */
 ul {
     display: flex;

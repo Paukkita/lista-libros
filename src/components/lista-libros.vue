@@ -1,15 +1,18 @@
 <template>
     <nav>
+        <!-- gestion de generos con un select importado desde uiverse -->
         <section id="filtros">
             <article id="filtro-genero">
                 <div class="tabs">
                     <input type="radio" id="genero-todos" name="genero" value="" v-model="generoSeleccionado" checked>
                     <label class="tab" for="genero-todos">Todos</label>
 
-                    <input type="radio" id="genero-fantasia" name="genero" value="Fantasía" v-model="generoSeleccionado">
+                    <input type="radio" id="genero-fantasia" name="genero" value="Fantasía"
+                        v-model="generoSeleccionado">
                     <label class="tab" for="genero-fantasia">Fantasía</label>
 
-                    <input type="radio" id="genero-ciencia" name="genero" value="Ciencia ficción" v-model="generoSeleccionado">
+                    <input type="radio" id="genero-ciencia" name="genero" value="Ciencia ficción"
+                        v-model="generoSeleccionado">
                     <label class="tab" for="genero-ciencia">Ciencia Ficción</label>
 
                     <input type="radio" id="genero-zombies" name="genero" value="Zombies" v-model="generoSeleccionado">
@@ -21,48 +24,58 @@
                     <span class="glider"></span>
                 </div>
             </article>
-
+            <!-- gestion de paginas con un input range importado desde uiverse -->
             <article id="filtro-paginas">
                 <div class="PB-range-slider-div">
-                    <input id="paginas" type="range" v-model="paginasMaximas" min="0" max="1500" step="50" class="PB-range-slider" />
+                    <input id="paginas" type="range" v-model="paginasMaximas" min="0" max="1500" step="50"
+                        class="PB-range-slider" />
                     <p class="PB-range-slidervalue">{{ paginasMaximas }} páginas</p>
                 </div>
             </article>
         </section>
     </nav>
-
+    <!--  lista de libros pasados por el filtro de librosfiltrados -->
     <ul>
         <li @click="cambiarLibro(libro)" v-for="libro in librosFiltrados" :key="libro.book.ISBN">
-            <img :src="libro.book.cover" :alt="libro.book.title" >
+            <img :src="libro.book.cover" :alt="libro.book.title">
         </li>
     </ul>
+    <!-- pie de pagina con los datos de la cantidad de libros -->
     <article id="pie">
-        Cantidad de libros disponibles {{ librosHijo.length }}
+        Cantidad de libros disponibles {{ cantidadLibrosFiltrado }}
     </article>
 </template>
 
 <script setup>
 import { inject, ref, computed } from 'vue';
 
-const librosHijo = inject('books'); 
+//Inserto los datos de los arrays del padre app.vue
+const librosHijo = inject('books');
 const librosDeseados = inject('librosDeseados');
 
+//datos vinculados con el template del documento y su v-model correspondiente
 const generoSeleccionado = ref("");
 const paginasMaximas = ref(1500);
+//variable asignada a la longitud de libros filtrados para actualizarse todo el rato.
+const cantidadLibrosFiltrado = computed(() => librosFiltrados.value.length);
 
+//funcion para cambiar un libro a  la lista deseados
 const cambiarLibro = (libro) => {
+    //para evitar repetidos pues buscamos si existe con un .some, si existe alguno pues existe
     const existe = librosDeseados.some(l => l.book.ISBN === libro.book.ISBN);
     if (!existe) {
+        //si no existe pues lo metemos en el array
         librosDeseados.push(libro);
+        //ahora queda buscar el indice donde esta el libro y lo borramos
         const index = librosHijo.findIndex(l => l.book.ISBN === libro.book.ISBN);
-        if (index !== -1) {
-            librosHijo.splice(index, 1);
-        }
+        librosHijo.splice(index, 1);
     }
 };
-
+//funcion computada que nos devolvera el array de libros filtrados
 const librosFiltrados = computed(() => {
+    //esto nos devuelve el array
     return librosHijo.filter(libro => {
+        //esto nos ira introduciendo los libros correctos en el array libroshijo.filter
         const cumpleGenero = !generoSeleccionado.value || libro.book.genre === generoSeleccionado.value;
         const cumplePaginas = libro.book.pages <= paginasMaximas.value;
         return cumpleGenero && cumplePaginas;
@@ -83,7 +96,8 @@ const librosFiltrados = computed(() => {
 }
 
 /* Contenedor de tabs y slider */
-.tabs, .PB-range-slider-div {
+.tabs,
+.PB-range-slider-div {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -91,14 +105,15 @@ const librosFiltrados = computed(() => {
     box-shadow: 0px 2px 4px rgba(24, 94, 224, 0.2);
     padding: 0.75rem;
     border-radius: 99px;
-    max-width: 350px; 
+    max-width: 350px;
     height: 50px;
     margin: auto;
 }
 
-.tabs{
+.tabs {
     max-width: 500px;
 }
+
 /* Ocultar radios en tabs */
 .tabs input[type="radio"] {
     display: none;
@@ -109,7 +124,8 @@ const librosFiltrados = computed(() => {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 35px; /* Igual al slider */
+    height: 35px;
+    /* Igual al slider */
     width: 100px;
     font-size: 1rem;
     color: black;
@@ -120,13 +136,14 @@ const librosFiltrados = computed(() => {
 }
 
 /* Pestaña activa */
-.tabs input[type="radio"]:checked + label {
+.tabs input[type="radio"]:checked+label {
     color: white;
-    background-color: #4b0082; /* Morado oscuro */
+    background-color: #4b0082;
+    /* Morado oscuro */
 }
 
 /* Movimiento del slider (glider) */
-.tabs input[id="genero-todos"]:checked ~ .glider {
+.tabs input[id="genero-todos"]:checked~.glider {
     transform: translateX(0);
 }
 
@@ -184,6 +201,7 @@ const librosFiltrados = computed(() => {
     min-width: 80px;
     text-align: center;
 }
+
 /* Estilos internos para el componente lista-libros */
 
 /* Contenedor de la lista de libros */
@@ -221,7 +239,8 @@ li img {
 
 /* Pie de la lista de libros (cantidad de libros disponibles) */
 #pie {
-    background-color: #4b0082; /* Morado oscuro */
+    background-color: #4b0082;
+    /* Morado oscuro */
     color: white;
     padding: 10px;
     text-align: center;
@@ -229,5 +248,4 @@ li img {
     border-radius: 8px;
     margin-top: 20px;
 }
-
 </style>
