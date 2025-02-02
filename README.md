@@ -38,16 +38,22 @@ Además, permite agregar libros a una lista de deseos, con la posibilidad de inc
 
 ## Diseño de la pagina y funcionamiento básico
 Imagen de diseño principal de la página:
-![image](https://github.com/user-attachments/assets/44a97c74-7652-49d2-b59d-85f5aaee27c7)
+
 
 Imagen de filtro por género:
-![image](https://github.com/user-attachments/assets/d3779bbe-574b-4988-8242-2eff67f4d69a)
+![image](https://github.com/user-attachments/assets/4e79df8b-eb93-4779-8acc-7ed5ed0aa268)
+
 
 Imagen de filtro por páginas:
-![image](https://github.com/user-attachments/assets/b740e2d1-8e91-443d-a0f3-a0f408bebfe7)
+![image](https://github.com/user-attachments/assets/191074db-fb89-4c42-89d1-6e065ea364b2)
+
 
 Muestra de página mostrando el almacen de libros y la lista de libros deseados: (Para reaizar el cambio se tiene que clickar el libro para cambiarlo y al contrario darle al boton de eliminar)
-![image](https://github.com/user-attachments/assets/8d00c76f-10e5-4a02-a840-5bf114a8a00f)
+![image](https://github.com/user-attachments/assets/9c8271e6-e5af-46e9-a774-d1bda757a880)
+
+
+Muestra comprando un libro
+![image](https://github.com/user-attachments/assets/4a53ad2f-28b2-4611-89d0-71d3d6d8a067)
 
 
 ## Contribución
