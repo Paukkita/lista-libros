@@ -17,6 +17,7 @@ Además, permite agregar libros a una lista de deseos, con la posibilidad de inc
 
 ## Tecnologías Utilizadas
 - Vue.js 3
+- Vitest
 
 ## Instalación
 1. Clona el repositorio:
