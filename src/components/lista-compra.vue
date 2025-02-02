@@ -2,12 +2,14 @@
     <!-- titulo basico -->
     <h2>Lista de compra</h2>
     <!-- lista donde se guardab los libros deseados. -->
-    <ul>
+    <section id="lista">
+        <ul>
         <li v-for="(libro, index) in librosDeseados" :key="libro.book.ISBN">
             <img :src="libro.book.cover" :alt="libro.book.title" class="cover" />
             <button @click="eliminarLibro(libro,index)">Eliminar</button>
         </li>
     </ul>
+    </section>
     <!-- boton ficticio para comprar cosas -->
     <section id="contenedor-comprar">
         <button @click="comprar" class="comprar">Comprar libros</button>
@@ -20,6 +22,8 @@
 
 <script setup>
 import { inject } from 'vue';
+import { useToast } from "vue-toastification";
+const toast = useToast();
 //insertamos los array
 const librosDeseados = inject('librosDeseados');
 const librosHijo = inject('books');
@@ -30,12 +34,23 @@ const eliminarLibro = (libro,index) => {
     librosHijo.push(libro);
 };
 //funcion para simular compra de libros
-const comprar=()=>{
-    alert("Has comprado todos estos libros")
-}
+const comprar = () => {
+    if (librosDeseados.length === 0) { 
+        toast.error("No hay libros para comprar", {
+            timeout: 4000
+        });
+    } else {
+        toast.success("Has comprado estos libros correctamente", {
+            timeout: 4000
+        });
+    }
+};
 </script>
 
 <style scoped>
+#lista{
+    min-height: 600px;
+}
 #contenedor-comprar{
     display: flex;
     justify-content: center;

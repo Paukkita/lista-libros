@@ -1,5 +1,6 @@
 <template>
-    <nav>
+    <section id="contenedor-lista">
+        <nav>
         <!-- gestion de generos con un select importado desde uiverse -->
         <section id="filtros">
             <article id="filtro-genero">
@@ -40,6 +41,8 @@
             <img :src="libro.book.cover" :alt="libro.book.title">
         </li>
     </ul>
+    </section>
+   
     <!-- pie de pagina con los datos de la cantidad de libros -->
     <article id="pie">
         Cantidad de libros disponibles {{ cantidadLibrosFiltrado }}
@@ -84,6 +87,9 @@ const librosFiltrados = computed(() => {
 </script>
 
 <style scoped>
+#contenedor-lista{
+    min-height: 600px;
+}
 /* Contenedor de filtros */
 #filtros {
     display: grid;
